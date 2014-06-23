@@ -5,7 +5,7 @@ var serverOptions = {
 	cors: true
 }
 var port = Number(process.env.port || 5000);
-var server = new Hapi.Server(port, serverOptions);
+var server = new Hapi.Server('0.0.0.0', port, serverOptions);
 
 var routeArray = [
 	{ method: 'GET', path: '/worldcup/v1/results', handler: results },
