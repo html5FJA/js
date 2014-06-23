@@ -1,0 +1,16 @@
+{
+  "name": "WCAPI",
+  "version": "0.0.0",
+  "description": "Testing",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^6.0.1",
+    "request": "*",
+    "cheerio": "*"
+  }
+}
