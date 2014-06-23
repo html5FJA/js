@@ -12,7 +12,7 @@ var routeArray = [
 	{ method: 'GET', path: '/worldcup/v1/schedule', handler: schedule },
 	{ method: 'GET', path: '/worldcup/v1/live', handler: live },
 	{ method: 'GET', path: '/worldcup/v1/results/{id}', handler: resultsByID },
-	{ method: 'GET', path: '/', handler: defaultHander }
+	{ method: 'GET', path: '/', handler: defaultHandler }
 ];
 
 server.route(routeArray);
