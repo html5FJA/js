@@ -14,15 +14,15 @@ exports.results = function results(reply) {
 			var a = $(this);
 			a = a.children().children();
 			if (a.attr('class') === "mu-i" && a.parent().parent().parent().parent().attr('class') === "match-list-date anchor") {
-				date = a.children().eq(1).text();
-				group = a.children().eq(3).text();
-				stadium = a.children('[class=mu-i-location]').children().first().text();
-				city = a.children('[class=mu-i-location]').children().last().text();
-				home = a.next().next().children().first().children().last().children().first().text();
-				away = a.next().next().children().first().next().children().last().children().first().text();
-				score = a.next().next().children().first().next().next().children().children().last().text();
-				hFlag = a.next().next().children().first().children().first().children().children().attr('src');
-				aFlag = a.next().next().children().first().next().children().first().children().children().attr('src');
+				date = $("div.mu-i-date", a).text(); 
+				group = $("div.mu-i-group", a).text();
+				stadium = $("div.mu-i-stadium", a).text();
+				city = $("div.mu-i-venue", a).text();
+				home = $("span.t-nText", a).eq(0).text();
+				away = $("span.t-nText", a).eq(1).text();
+				score = $("span.s-scoreText", a).text();
+				hFlag = $("img.flag", a).eq(0).attr('src');
+				aFlag = $("img.flag", a).eq(1).attr('src');
 
 				matchResults = {
 					date: date,
@@ -54,15 +54,15 @@ exports.schedule = function schedule(reply) {
 			var a = $(this);
 			a = a.children().children();
 			if (a.attr('class') === "mu-i" && a.parent().parent().parent().parent().attr('class') === "match-list-date anchor") {
-				date = a.children().eq(1).text();
-				group = a.children().eq(3).text();
-				stadium = a.children('[class=mu-i-location]').children().first().text();
-				city = a.children('[class=mu-i-location]').children().last().text();
-				home = a.next().next().children().first().children().last().children().first().text();
-				away = a.next().next().children().first().next().children().last().children().first().text();
-				time = a.next().next().children().first().next().next().children().children().last().text();
-				hFlag = a.next().next().children().first().children().children().children().attr('src');
-				aFlag = a.next().next().children().first().next().children().children().children().attr('src');
+				date = $("div.mu-i-date", a).text(); 
+				group = $("div.mu-i-group", a).text();
+				stadium = $("div.mu-i-stadium", a).text();
+				city = $("div.mu-i-venue", a).text();
+				home = $("span.t-nText", a).eq(0).text();
+				away = $("span.t-nText", a).eq(1).text();
+				time = $("span.s-scoreText", a).text();
+				hFlag = $("img.flag", a).eq(0).attr('src');
+				aFlag = $("img.flag", a).eq(1).attr('src');
 
 				matchSchedule = {
 					date: date,
@@ -94,15 +94,15 @@ exports.live = function live(reply) {
 			var a = $(this);
 			a = a.children().children();
 			if (a.attr('class') === "mu-i" && a.parent().parent().parent().parent().attr('class') === "match-list-date anchor") {
-				date = a.children().eq(1).text();
-				group = a.children().eq(3).text();
-				stadium = a.children('[class=mu-i-location]').children().first().text();
-				city = a.children('[class=mu-i-location]').children().last().text();
-				home = a.next().next().children().first().children().last().children().first().text();
-				away = a.next().next().children().first().next().children().last().children().first().text();
-				score = a.next().next().children().first().next().next().children().children().last().text();
-				hFlag = a.next().next().children().first().children().children().children().attr('src');
-				aFlag = a.next().next().children().first().next().children().children().children().attr('src');
+				date = $("div.mu-i-date", a).text(); 
+				group = $("div.mu-i-group", a).text();
+				stadium = $("div.mu-i-stadium", a).text();
+				city = $("div.mu-i-venue", a).text();
+				home = $("span.t-nText", a).eq(0).text();
+				away = $("span.t-nText", a).eq(1).text();
+				score = $("span.s-scoreText", a).text();
+				hFlag = $("img.flag", a).eq(0).attr('src');
+				aFlag = $("img.flag", a).eq(1).attr('src');
 
 				liveMatch = {
 					date: date,
@@ -133,18 +133,18 @@ exports.byID = function resultsByID(reply, team) {
 		$('div.mu.result').each(function(i, element) {
 			var a = $(this);
 			a = a.children().children();
-			hID = a.next().next().children().first().children().last().children().last().text();
-			aID = a.next().next().children().first().next().children().last().children().last().text();
+			hID = $("span.t-nTri", a).eq(0).text();
+			aID = $("span.t-nTri", a).eq(1).text();
 			if (hID === team || aID === team) {
-				date = a.children().eq(1).text();
-				group = a.children().eq(3).text();
-				stadium = a.children('[class=mu-i-location]').children().first().text();
-				city = a.children('[class=mu-i-location]').children().last().text();
-				home = a.next().next().children().first().children().last().children().first().text();
-				away = a.next().next().children().first().next().children().last().children().first().text();
-				score = a.next().next().children().first().next().next().children().children().last().text();
-				hFlag = a.next().next().children().first().children().children().children().attr('src');
-				aFlag = a.next().next().children().first().next().children().children().children().attr('src');
+				date = $("div.mu-i-date", a).text(); 
+				group = $("div.mu-i-group", a).text();
+				stadium = $("div.mu-i-stadium", a).text();
+				city = $("div.mu-i-venue", a).text();
+				home = $("span.t-nText", a).eq(0).text();
+				away = $("span.t-nText", a).eq(1).text();
+				score = $("span.s-scoreText", a).text();
+				hFlag = $("img.flag", a).eq(0).attr('src');
+				aFlag = $("img.flag", a).eq(1).attr('src');
 
 				matchResults = {
 					date: date,
