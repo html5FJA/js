@@ -4,7 +4,7 @@ var Data = require("./scrape");
 var serverOptions = {
 	cors: true
 }
-var port = process.env.port || 5000;
+var port = Number(process.env.port || 5000);
 var server = new Hapi.Server(port, serverOptions);
 
 var routeArray = [
