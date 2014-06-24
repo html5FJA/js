@@ -1,40 +1,25 @@
-var Hapi = require("hapi");
-var Data = require("./scrape");
+var express = require('express');
+var Data = require('./scrape');
+ 
+var app = express();
 
-var serverOptions = {
-	cors: true
-}
 var port = Number(process.env.PORT || 5000);
-var server = new Hapi.Server('0.0.0.0', port, serverOptions);
-
-var routeArray = [
-	{ method: 'GET', path: '/worldcup/v1/results', handler: results },
-	{ method: 'GET', path: '/worldcup/v1/schedule', handler: schedule },
-	{ method: 'GET', path: '/worldcup/v1/live', handler: live },
-	{ method: 'GET', path: '/worldcup/v1/results/{id}', handler: resultsByID },
-	{ method: 'GET', path: '/', handler: defaultHandler }
-];
-
-server.route(routeArray);
-
-function results (request, reply) {
+ 
+app.get('/worldcup/v1/results', function results(request, reply) {
 	Data.results(reply);
-}
-
-function schedule (request, reply) {
-	Data.schedule(reply);
-}
-
-function live (request, reply) {
-	Data.live(reply);
-}
-
-function resultsByID (request, reply) {
+});
+app.get('/worldcup/v1/results/{id}', function resultsByID (request, reply) {
 	Data.byID(reply, request.params.id);
-}
+});
+app.get('/worldcup/v1/schedule', function schedule(request, reply) {
+	Data.schedule(reply);
+});
+app.get('/worldcup/v1/live', function live(request, reply) {
+	Data.live(reply);
+});
+app.get('/', function defaultHandler(request, reply) {
+	reply.send("Success");
+});
 
-function defaultHandler (request,reply) {
-	reply("Success");
-}
-
-server.start();
+console.log(port);
+app.listen(port);
