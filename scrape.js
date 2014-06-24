@@ -38,7 +38,7 @@ exports.results = function results(reply) {
 				data = data.concat(matchResults);
 			}
 		})
-		reply.send(data);
+		reply(data);
 	});
 }
 
@@ -78,7 +78,7 @@ exports.schedule = function schedule(reply) {
 				data = data.concat(matchSchedule);
 			}
 		})
-		reply.send(data);
+		reply(data);
 	});
 }
 
@@ -118,7 +118,7 @@ exports.live = function live(reply) {
 				data = data.concat(liveMatch);	
 			}
 		})
-		reply.send(data);
+		reply(data);
 	});
 }
 
@@ -134,7 +134,7 @@ exports.byID = function resultsByID(reply, team) {
 			var a = $(this);
 			a = a.children().children();
 			hID = $("span.t-nTri", a).eq(0).text();
-			aID = $("span.t-nTri", a).eq().text();
+			aID = $("span.t-nTri", a).eq(1).text();
 			if (hID === team || aID === team) {
 				date = $("div.mu-i-date", a).text(); 
 				group = $("div.mu-i-group", a).text();
@@ -160,7 +160,7 @@ exports.byID = function resultsByID(reply, team) {
 				data = data.concat(matchResults);
 			}
 		})
-	reply.send(data);
+	reply(data);
 	});
 }
 
